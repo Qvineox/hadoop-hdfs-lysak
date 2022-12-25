@@ -37,7 +37,7 @@ wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.4/hadoop-3.3.4.tar.gz
 4. Загрузка необходимых файлов конфигурации ```hadoop``` для базовой ```node``` ([core-site.xml](config%2Fcore-site.xml)
    и [hadoop-env.sh](config%2Fhadoop-env.sh));
 5. Конфигурация [namenode](hdfs-nodes%2Fnamenode%2Fconfig) и [datanode](hdfs-nodes%2Fdatanode%2Fconfig);
-6. Написание и сборка основного [Dockerfile](..%2FDockerfile) (*оставил комментарии от предыдущих попыток*);
+6. Написание и сборка основного [Dockerfile](Dockerfile) (*оставил комментарии от предыдущих попыток*);
 
 ```
 sudo docker build . -t base-image:1
@@ -64,8 +64,8 @@ sudo docker run -d --net hadoop_network --name datanode-3 datanode:1
 
 9. В конечном этоге получается 1 ```namenode``` и 3 ```datanode```. Демонстрация на скриншоте:
    ![hadoop-working.png](hadoop-working.png)
-10. Для удобства написал скрипт для запуска [start.sh](..%2Fstart.sh);
-11. Также для полноценной работы создал [docker-compose.yml](..%2Fdocker-compose.yml);
+10. Для удобства написал скрипт для запуска [start.sh](start.sh);
+11. Также для полноценной работы создал [docker-compose.yml](docker-compose.yml);
 12. Скриншот запуска клестера из 4 ```worker```:
 
 ![img.png](img.png)

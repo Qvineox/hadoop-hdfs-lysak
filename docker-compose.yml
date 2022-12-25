@@ -1,0 +1,28 @@
+version: "3.7"
+
+networks:
+  hadoop_network:
+    external: true
+
+services:
+  namenode:
+    hostname: namenode
+    image: namenode:1
+    restart: always
+    ports:
+      - "9870:9870"
+      - "50030:50030"
+      - "8020:8020"
+      - "19888:19888"
+    container_name: namenode
+    volumes:
+      - ./app:/home/bigdata/app
+      - ./data:/home/bigdata/data
+    networks:
+      - hadoop_network
+
+  worker:
+    image: datanode:1
+    restart: always
+    networks:
+      - hadoop_network
