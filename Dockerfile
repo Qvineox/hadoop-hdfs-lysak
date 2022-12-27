@@ -10,7 +10,7 @@ ENV HADOOP_TAR_NAME=hadoop-3.3.4.tar.gz
 # RUN apk update
 
 RUN apt update
-RUN apt install -y arp-scan python3
+RUN apt install python3
 
 # рабочая директория
 WORKDIR /opt
@@ -58,4 +58,9 @@ ADD config/core-site.xml $HADOOP_HOME/etc/hadoop/
 # можно протестировать работу HADOOP с помощью команды ниже
 # RUN $HADOOP_HOME/bin/hadoop
 
-CMD /bin/bash
+# установка SSH
+RUN apt-get update && apt-get install openssh-server
+RUN ssh-keygen -t rsa -f ~/.ssh/id_rsa -P '' && \
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+
+CMD [ "sh", "-c", "service ssh start; bash"]
