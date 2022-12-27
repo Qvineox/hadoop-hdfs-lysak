@@ -11,3 +11,5 @@ docker run -d --net hadoop_network --name datanode-2 datanode:1
 
 # запуск DATANODE 3 в сети HADOOP_NETWORK
 docker run -d --net hadoop_network --name datanode-3 datanode:1
+
+sudo docker exec -it namenode bash

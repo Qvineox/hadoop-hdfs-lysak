@@ -1,6 +1,6 @@
 # hadoop-hdfs-lysak
 
-Домашняя работа по дисциплине ["Интеллектуальные системы и технологии"](https://github.com/SergUSProject/BigDataProc_HomeWorks).
+Домашние работы по дисциплине ["Интеллектуальные системы и технологии"](https://github.com/SergUSProject/BigDataProc_HomeWorks).
 
 # Описание работы
 
@@ -16,7 +16,7 @@
 Изначально я использовал [alpine:latest](https://hub.docker.com/_/alpine), но не получилось, т.к. возникли сложности с
 установкой ``JAVA_PATH``.
 
-## Поэтапное выполнение
+## Домашнее задание №1. Выполнение
 
 1. Установка SSH-сервера для подключения к машине;
 
@@ -69,3 +69,42 @@ sudo docker run -d --net hadoop_network --name datanode-3 datanode:1
 12. Скриншот запуска клестера из 4 ```worker```:
 
 ![img.png](img.png)
+
+## Домашнее задание №2
+
+1. С помощью SSH, подключаюсь к ```namenode``` и запускаю ```hadoop```:
+```
+$HADOOP_HOME/sbin/start-dfs.sh
+$HADOOP_HOME/sbin/start-yarn.sh
+```
+2. В качестве задачи выполню стандартный скрипт из библиотеки примеров, а именно ```wordcount```:
+```
+mkdir input
+echo "First test sentence Flower Congo" >input/file2.txt
+echo "Second test sentence Pineapple Flower Coating" >input/file1.txt
+hadoop fs -mkdir -p input
+hdfs dfs -put ./input/* input
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/sources/hadoop-mapreduce-examples-3.3.4-sources.jar org.apache.hadoop.examples.WordCount input output
+```
+3. Был получен следующий вывод в консоль:
+```
+input file1.txt:
+Second test sentence Pineapple Flower Coating
+
+input file2.txt:
+First test sentence Flower Congo
+
+wordcount output:
+Coating 1
+Congo   1
+First   1
+Flower  2
+Pineapple       1
+Second  1
+sentence        2
+test    2
+```
+
+## Дополнительно
+
+Также хотел показать [HDFS клиент для переноса файлов](https://github.com/Qvineox/webHDFS-client), который я делал на 3 курсе.

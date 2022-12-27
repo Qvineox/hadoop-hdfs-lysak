@@ -55,6 +55,13 @@ ENV PATH=$PATH:$HADOOP_HOME/bin
 ADD config/hadoop-env.sh $HADOOP_HOME/etc/hadoop/
 ADD config/core-site.xml $HADOOP_HOME/etc/hadoop/
 
+# перенос необходимых папок со скриптами
+RUN mkdir ~/scripts
+RUN mkdir ~/data
+
+COPY .scripts/* ~/scripts
+COPY .data/* ~/data
+
 # можно протестировать работу HADOOP с помощью команды ниже
 # RUN $HADOOP_HOME/bin/hadoop
 
