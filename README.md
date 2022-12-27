@@ -65,8 +65,8 @@ sudo docker run -d --net hadoop_network --name datanode-3 datanode:1
 9. В конечном этоге получается 1 ```namenode``` и 3 ```datanode```. Демонстрация на скриншоте:
    ![hadoop-working.png](hadoop-working.png)
 10. Для удобства написал скрипт для запуска [start.sh](start.sh);
-11. Также для полноценной работы создал [docker-compose.yml](docker-compose.yml);
-12. Скриншот запуска клестера из 4 ```worker```:
+11. Также для полноценной работы создал [docker-compose.yml](docker-compose.yml) *(на данный момент не до совсем корректно работает)*;
+12. Скриншот запуска кластера из 4 ```worker```:
 
 ![img.png](img.png)
 
